@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Horizontal Card Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <style> 
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem ;
+    overflow-x: hidden;
+}
+
+section{
+    padding: 2rem 9%;
+}
+
+
+    .custom-card {
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    position: relative; 
+    height: auto; 
+}
+
+.custom-card .card-img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}
+
+.custom-card .view-more-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px; 
+}
+
+.custom-card .col-md-4 {
+    height: 200px; 
+    overflow: hidden; 
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 1.57rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+}
+
+
+header .logo:hover {
+    text-decoration: none; 
+}
+
+
+header .logo{
+    
+    font-size: 3rem;
+    color: #333;
+    font-weight: bolder;
+    text-decoration: none; 
+    display: inline-block; 
+    margin-left: -1.5px; 
+}
+
+header .logo span{
+    color: #e84393;
+}
+
+header #toggler{
+    display: none;
+}
+
+/*header .cart-icon {
+    margin-left: 20px; 
+    font-size: 2.5rem; 
+    color: #333; 
+}
+
+header .cart-icon:hover {
+    color: #e84393; 
+}
+
+header .profile-icon {
+    margin-left: 15px; 
+    font-size: 2.5rem; 
+    color: #333; 
+}
+
+header .profile-icon:hover {
+    color: #e84393; 
+}
+
+header .logo span {
+    color: #e84393;
+}*/
+
+
+@media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+   header{
+    padding:2rem;
+   }
+   section{
+    padding:2rem;
+   }
+   .home{
+    background-position: left;
+   }
+}
+
+@media(max-width:768px){
+
+ header .navbar{
+    position: absolute;
+    top: 0; left:0; right:0;
+    background:#eee;
+    border-top: .1rem solid rgba(0, 0, 0, .1);
+     clip-path:polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+header #toggler:checked ~ .navbar{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+
+
+}
+
+@media(max-width:450px){
+    html{
+        font-size: 50%;
+    }
+    .heading{
+        font-size: 3rem;
+    }
+   
+}
+
+@media(max-width: 768px) {
+    header .logo {
+        margin-left: 1rem; /* Adjust left margin for smaller screens */
+    }
+}
+
+@media(max-width: 576px) {
+    header .logo {
+        margin-left: 0.5rem; /* Further adjust left margin for even smaller screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+    <a href="#" class="logo">TrendRent <span>.</span></a>
+    <!--<i class="fas fa-user profile-icon"></i> 
+    <i class="fas fa-shopping-cart cart-icon"></i>-->
+</header>
+<br><br><br><br><br>
+    <div class="container">
+        <h1 class="mt-5">Products</h1>
+        <div class="form-check form-check-inline mt-3">
+            <input class="form-check-input" type="checkbox" id="menCheckbox" value="men">
+            <label class="form-check-label" for="menCheckbox">Men</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="womenCheckbox" value="women">
+            <label class="form-check-label" for="womenCheckbox">Women</label>
+        </div>
+        <div class="row mt-3" id="productCards">
+  <% products.forEach(function(product) { %>
+                <div class="col-md-6 mb-4">
+                    <div class="card custom-card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="/uploads/<%= product.img1 %>" class="card-img" alt="Image 1">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= product.name %></h5>
+                                   <!-- <p class="card-text">Gender: <%= product.gender %></p>-->
+                                    <p class="card-text">Rent: <%= product.rent %></p>
+                                  <!-- <p class="card-text">Detail: <%= product.detail %></p>-->
+                                    <a href="/productImages/<%= product.id %>" class="view-more-btn">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Function to fetch and display products based on gender
+            function fetchProducts(gender) {
+                $.ajax({
+                    url: '/products/' + gender,
+                    type: 'GET',
+                    success: function (data) {
+                        displayProducts(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching products:', error);
+                    }
+                });
+            }
+
+            // Function to display products
+            function displayProducts(products) {
+                var productCardsHtml = '';
+                products.forEach(function (product) {
+                    productCardsHtml += `
+                        <div class="col-md-6 mb-4">
+                            <div class="card custom-card">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src="/uploads/${product.img1}" class="card-img" alt="Image 1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${product.name}</h5>
+                                            <p class="card-text">Gender: ${product.gender}</p>
+                                            <p class="card-text">Rent: ${product.rent}</p>
+                                            <p class="card-text">Detail: ${product.detail}</p>
+                                            <a href="/productImages/${product.id}" class="view-more-btn">View More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                $('#productCards').html(productCardsHtml);
+            }
+
+            // Event listener for men checkbox
+            $('#menCheckbox').change(function () {
+                if ($(this).is(':checked')) {
+                    fetchProducts('men');
+                }
+            });
+
+            // Event listener for women checkbox
+            $('#womenCheckbox').change(function () {
+                if ($(this).is(':checked')) {
+                    fetchProducts('women');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
