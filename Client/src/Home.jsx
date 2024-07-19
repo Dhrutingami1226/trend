@@ -1,7 +1,8 @@
 import React from 'react'
 import image from './Constants/image'
-import Adv from './components/Adv'
-import Footer from './components/Footer'
+import Adv from './Components/Adv'
+import Footer from './Components/Footer'
+import Card from './Components/Card'
 
 function Home() {
   return (
@@ -11,13 +12,79 @@ function Home() {
       </div>
       <Adv />
       <h1 className='text-center comfortaa text-2xl font-semibold'>Products</h1>
-      <div className="m-4 grid grid-cols-2 lg:grid-cols-3 gap-4 xl:grid-cols-4">
-          <div className="bg-slate-600 h-40 w-full rounded-xl"></div>
-          <div className="bg-slate-600 h-40 w-full rounded-xl"></div>
-          <div className="bg-slate-600 h-40 w-full rounded-xl"></div>
-          <div className="bg-slate-600 h-40 w-full rounded-xl"></div>
-          <div className="bg-slate-600 h-40 w-full rounded-xl"></div>
-          <div className="bg-slate-600 h-40 w-full rounded-xl"></div>
+      <div className="m-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5">
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
+        <Card 
+            title="Product 1234564789789" 
+            image={image.mainimage} 
+            price="$10.00" 
+            rating="4.5" 
+            subtitle="cotton 122m25522  55665656 54646 585885858588787878 5885555555585555"
+            cardStyle="bg-slate-200"
+            titleStyle=''
+          />
       </div>
       <Footer/>
     </>

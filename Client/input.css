@@ -7,3 +7,12 @@
 .comfortaa {
   font-family: 'Comfortaa', cursive;
 }
+
+@font-face{
+  font-family: "myfont";
+  src: url(./src/Assets/fonts/Product\ Sans\ Regular.ttf);
+}
+
+.product-sans{
+  font-family: 'myfont';
+}
