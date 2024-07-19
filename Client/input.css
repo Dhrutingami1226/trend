@@ -4,6 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.comfortaa{
-font-family: 'Comfortaa';
+.comfortaa {
+  font-family: 'Comfortaa', cursive;
 }
