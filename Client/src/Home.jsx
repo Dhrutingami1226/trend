@@ -7,8 +7,11 @@ import Card from './Components/Card'
 function Home() {
   return (
     <>
+      <div className="absolute">
+        <Topbar />
+      </div>
       <div className="flex justify-center items-center h-[65vh] xl:h-[85vh]">
-          <img src={image.mainimage} alt="Main" className="object-cover rounded-b-[30px] h-full w-full shadow-lg" />
+        <img src={image.mainimage} alt="Main" className="object-cover rounded-b-[30px] h-full w-full shadow-lg" />
       </div>
       <Adv />
       <h1 className='text-center comfortaa text-2xl font-semibold'>Products</h1>
@@ -86,6 +89,7 @@ function Home() {
             titleStyle=''
           />
       </div>
+      <Footer/>
     </>
   )
 }

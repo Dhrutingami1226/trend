@@ -22,6 +22,7 @@
 // export default Topbar
 import { useState } from 'react';
 import { Transition } from '@headlessui/react';
+import { Link, NavLink} from 'react-router-dom'
 
 const Topbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,16 +30,19 @@ const Topbar = () => {
   return (
     <div className="bg-transparent flex justify-between items-center mt-2 px-4 w-[98vw] my-2">
       <div className="flex items-center h-12 space-x-4 md:space-x-12">
-        <p className="comfortaa text-2xl sm:text-4xl cursor-pointer">Trendrent.</p>
+        <Link to='/' className='comfortaa text-2xl sm:text-4xl cursor-pointer'>
+          Trendrent.
+        </Link>
         <div className="hidden md:flex space-x-4 md:space-x-12">
-          <p className="comfortaa text-lg sm:text-xl cursor-pointer">Home</p>
-          <p className="comfortaa text-lg sm:text-xl cursor-pointer">Men</p>
-          <p className="comfortaa text-lg sm:text-xl cursor-pointer">Women</p>
+          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Home</Link>
+          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Men</Link>
+          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Women</Link>
+          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Kid</Link>
         </div>
       </div>
       <div className="flex items-center h-12 space-x-4">
         <div className="hidden md:flex">
-          <p className="comfortaa text-lg sm:text-xl cursor-pointer">Login</p>
+          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Login</Link>
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -62,10 +66,11 @@ const Topbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
-          <p className="comfortaa text-lg mb-4 cursor-pointer">Home</p>
-          <p className="comfortaa text-lg mb-4 cursor-pointer">Men</p>
-          <p className="comfortaa text-lg mb-4 cursor-pointer">Women</p>
-          <p className="comfortaa text-lg cursor-pointer">Login</p>
+          <Link className="comfortaa text-lg mb-4 cursor-pointer">Home</Link>
+          <Link className="comfortaa text-lg mb-4 cursor-pointer">Men</Link>
+          <Link className="comfortaa text-lg mb-4 cursor-pointer">Women</Link>
+          <Link className="comfortaa text-lg mb-4 cursor-pointer">Kid</Link>
+          <Link className="comfortaa text-lg mb-4 cursor-pointer">Login</Link>
         </div>
       </Transition>
     </div>
