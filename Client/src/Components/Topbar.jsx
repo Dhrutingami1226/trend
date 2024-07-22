@@ -20,7 +20,7 @@ const Topbar = () => {
       </div>
       <div className="flex items-center h-12 space-x-4">
         <div className="hidden md:flex">
-          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Login</Link>
+          <Link to='/login' className="comfortaa text-lg sm:text-xl cursor-pointer">Login</Link>
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
