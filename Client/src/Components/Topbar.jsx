@@ -1,25 +1,3 @@
-// import React from 'react'
-
-// function Topbar() {
-//   return (
-//     <div className="bg-transparent flex justify-between items-center mt-2 px-4">
-//   <div className="flex items-center h-12 space-x-4 md:space-x-12">
-//     <p className='comfortaa text-2xl sm:text-4xl'>Trendrent.</p>
-//     <div className="hidden md:flex space-x-4 md:space-x-12">
-//       <p className='comfortaa text-lg sm:text-xl'>Home</p>
-//       <p className='comfortaa text-lg sm:text-xl'>Men</p>
-//       <p className='comfortaa text-lg sm:text-xl'>Women</p>
-//     </div>
-//   </div>
-//   <div className="flex items-center h-12">
-//     <p className='comfortaa text-lg sm:text-xl'>Login</p>
-//   </div>
-// </div>
-
-//   )
-// }
-
-// export default Topbar
 import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { Link, NavLink} from 'react-router-dom'
@@ -34,10 +12,10 @@ const Topbar = () => {
           Trendrent.
         </Link>
         <div className="hidden md:flex space-x-4 md:space-x-12">
-          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Home</Link>
-          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Men</Link>
-          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Women</Link>
-          <Link className="comfortaa text-lg sm:text-xl cursor-pointer">Kid</Link>
+          <Link to='/' className="comfortaa text-lg sm:text-xl cursor-pointer">Home</Link>
+          <Link to='/men' className="comfortaa text-lg sm:text-xl cursor-pointer">Men</Link>
+          <Link to='/women' className="comfortaa text-lg sm:text-xl cursor-pointer">Women</Link>
+          <Link to='/kids' className="comfortaa text-lg sm:text-xl cursor-pointer">Kids</Link>
         </div>
       </div>
       <div className="flex items-center h-12 space-x-4">
@@ -66,11 +44,11 @@ const Topbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
-          <Link className="comfortaa text-lg mb-4 cursor-pointer">Home</Link>
-          <Link className="comfortaa text-lg mb-4 cursor-pointer">Men</Link>
-          <Link className="comfortaa text-lg mb-4 cursor-pointer">Women</Link>
-          <Link className="comfortaa text-lg mb-4 cursor-pointer">Kid</Link>
-          <Link className="comfortaa text-lg mb-4 cursor-pointer">Login</Link>
+          <Link to='/' className="block comfortaa text-lg mb-4 cursor-pointer">Home</Link>
+          <Link to='/men' className="block comfortaa text-lg mb-4 cursor-pointer">Men</Link>
+          <Link to='/women' className="block comfortaa text-lg mb-4 cursor-pointer">Women</Link>
+          <Link to='/kids' className="block comfortaa text-lg mb-4 cursor-pointer">Kids</Link>
+          <Link to='/login' className="block comfortaa text-lg mb-4 cursor-pointer">Login</Link>
         </div>
       </Transition>
     </div>
