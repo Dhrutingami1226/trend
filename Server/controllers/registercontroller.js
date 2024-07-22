@@ -1,40 +1,20 @@
-// controllers/registerController.js
-
-const pool = require('../db/db'); // Assuming db.js handles database connection and exports pool
+const db = require('../db/db'); 
 
 function registerUser(req, res) {
-    var name = req.body.name;
-    var email = req.body.email;
-    var password = req.body.password;
-    var confirmPassword = req.body.confirmPassword;
+    const { name, email, password } = req.body;
 
-    if (!name || !email || !password || !confirmPassword) {
-        return res.status(400).send('All fields are required');
-    }
+    const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+    const values = [name, email, password];
 
-    if (password !== confirmPassword) {
-        return res.status(400).send('Passwords do not match');
-    }
-
-    pool.getConnection(function (err, connection) {
+    db.query(query, values, (err, result) => {
         if (err) {
-            return res.status(500).send('Error connecting to the database');
+            console.error('Error inserting data:', err);
+            return res.status(500).json({ error: 'Failed to register user.' });
         }
-
-        var query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-        connection.query(query, [name, email, password], function (err, result) {
-            connection.release();
-
-            if (err) {
-                console.error('Error inserting data into the database:', err);
-                return res.status(500).send('Error inserting data into the database');
-            }
-
-            res.status(201).send('User registered successfully');
-        });
+        res.status(201).json({ message: 'User registered successfully.' });
     });
 }
 
 module.exports = {
-    registerUser: registerUser
+    registerUser
 };
