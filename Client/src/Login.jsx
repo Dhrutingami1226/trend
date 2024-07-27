@@ -10,13 +10,13 @@ function Login() {
 
   return (
     <>
-      <Link to='/' className='absolute block comfortaa text-4xl p-4'>Trendrent.</Link>
+      <Link to='/' className='absolute block comfortaa text-4xl p-4 pt-3'>Trendrent.</Link>
       <div className="flex w-[100vw] h-[100vh]">
         <div className="md:flex hidden flex-1 w-full h-full">
           <img src={image.mainimage} alt="" className='h-full object-cover' />
         </div>
         <div className="flex-1 flex-col px-8 h-full items-center justify-center flex">
-          <div className="my-6 p-2 bg-[#D7D0FF] -z-2 w-full rounded-full flex comfortaa text-center">
+          <div className="my-6 p-2 bg-[#D7D0FF] max-w-[600px] w-full rounded-full flex comfortaa text-center">
             <button
               className={`flex-1 py-2 rounded-full cursor-pointer ${isLogin ? "bg-white shadow-lg" : ""}`}
               onClick={() => setIsLogin(true)}
