@@ -1,46 +1,40 @@
 const db = require('../db/db');
-const multer = require('multer');
-const path = require('path');
+const { upload, uploadFile } = require('../utils/upload');
 
-// Set photo storage path
-const storage = multer.diskStorage({
-  destination: './uploads/images',
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Use a unique filename
-  }
-});
-
-// Uploading condition
-const upload = multer({
-  storage,
-  limits: { fileSize: 30000000 } // 30MB limit per photo
-}).array('images', 4); 
-
-// Add Product Function
 function addProduct(req, res) {
-  upload(req, res, (err) => {
+  uploadFile.array('images', 4)(req, res, (err) => {
     if (err) {
+      console.log('Upload Error:', err);
       return res.status(400).json({ error: 'Image upload error: ' + err });
     }
 
-    const { productName, rentPrice, description, type } = req.body;
+    console.log('Files Uploaded:', req.files);  // uploaded files
 
-    if (!productName || !rentPrice || !description || !type) {
+    const { productName, gender, rentPrice, securityDepo, description } = req.body;
+
+    if (!productName || !gender || !rentPrice || !securityDepo || !description) {
       return res.status(400).json({ error: 'All fields are required.' });
     }
 
+    // Ensure we have exactly 4 files
     if (!req.files || req.files.length !== 4) {
-      return res.status(400).json({ error: 'All four images are required'+ err });
+      console.log('Files Length:', req.files.length);  // number of files received
+      return res.status(400).json({ error: 'All four images are required' });
     }
 
+    // Map each file's path to the database columns
     const imagePaths = req.files.map(file => file.path);
     const [image1, image2, image3, image4] = imagePaths;
 
-    const query = 'INSERT INTO products (name, type, description, price, image1, image2, image3, image4) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    const values = [productName, type, description, rentPrice, image1, image2, image3, image4];
+    const query = `
+      INSERT INTO product (name, gender, rent, securitydepo, detail, img1, img2, img3, img4)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const values = [productName, gender, rentPrice, securityDepo, description, image1, image2, image3, image4];
 
     db.query(query, values, (err, results) => {
       if (err) {
+        console.log('Database Error:', err);  // any database errors
         return res.status(500).json({ error: 'Database error: ' + err });
       }
       res.status(201).json({ message: 'Product added successfully!' });
